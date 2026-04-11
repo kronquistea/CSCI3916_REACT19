@@ -30,6 +30,8 @@ const MovieDetail = () => {
       return <div>No movie data available.</div>;
     }
 
+    console.log(selectedMovie);
+
     return (
       <Card className="bg-dark text-dark p-4 rounded">
         <Card.Header>Movie Detail</Card.Header>

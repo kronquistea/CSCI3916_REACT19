@@ -50,6 +50,7 @@ export function fetchMovie(movieId) {
     }
 }
 
+/*
 export function fetchMovies() {
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies?reviews=true`, {
@@ -70,3 +71,4 @@ export function fetchMovies() {
         }).catch((e) => console.log(e));
     }
 }
+*/
