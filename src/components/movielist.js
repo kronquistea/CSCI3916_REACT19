@@ -31,8 +31,6 @@ function MovieList() {
         return <div>Loading....</div>;
     }
 
-    console.log(memoizedMovies);
-
     return (
         <Carousel onSelect={handleSelect} className="bg-dark text-light p-4 rounded">
           {memoizedMovies.map((movie) => (

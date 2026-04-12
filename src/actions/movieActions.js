@@ -64,7 +64,6 @@ export function fetchMovies() {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
-            console.log(response)
             return response.json()
         }).then((res) => {
             dispatch(moviesFetched(res));
