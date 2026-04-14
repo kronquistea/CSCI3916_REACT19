@@ -137,7 +137,7 @@ const MovieDetail = () => {
 
     const newReview = {
       username: username,
-      review: reviewText,
+      reviewText: reviewText,
       rating: rating,
     };
 

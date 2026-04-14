@@ -35,7 +35,7 @@ export const addReview = (movieId, review) => async (dispatch) => {
         },
         body: JSON.stringify({
             username: review.username,
-            review: review.review,
+            review: review.reviewText,
             rating: review.rating,
         }),
     });
