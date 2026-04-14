@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovie } from '../actions/movieActions';
+import { fetchMovie, addReview } from '../actions/movieActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs';
