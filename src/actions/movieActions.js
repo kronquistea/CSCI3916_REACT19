@@ -26,7 +26,7 @@ function movieSet(movie) {
 export const addReview = (movieId, review) => async (dispatch) => {
   try {
     console.log(review)
-    await fetch(`/api/movies/${movieId}/reviews`, {
+    await fetch(`${env.REACT_APP_API_URL}/movies/${movieId}/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
