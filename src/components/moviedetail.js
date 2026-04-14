@@ -28,8 +28,6 @@ const DetailInfo = ({
     return <div>No movie data available.</div>;
   }
 
-  console.log(selectedMovie);
-
   return (
     <Card className="bg-dark text-dark p-4 rounded">
       <Card.Header>Movie Detail</Card.Header>
@@ -122,7 +120,6 @@ const MovieDetail = () => {
 
     const username = localStorage.getItem('username');
 
-    // ✅ Validation
     if (!username) {
       alert('You must be logged in to submit a review.');
       return;
@@ -139,10 +136,12 @@ const MovieDetail = () => {
     }
 
     const newReview = {
-      username,
+      username: username,
       review: reviewText,
-      rating,
+      rating: rating,
     };
+
+    console.log(newReview)
 
     dispatch(addReview(movieId, newReview));
 

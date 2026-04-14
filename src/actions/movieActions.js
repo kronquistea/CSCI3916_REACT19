@@ -25,6 +25,7 @@ function movieSet(movie) {
 
 export const addReview = (movieId, review) => async (dispatch) => {
   try {
+    console.log(review)
     await fetch(`/movies/${movieId}/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
