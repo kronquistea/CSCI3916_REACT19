@@ -27,13 +27,17 @@ export const addReview = (movieId, review) => async (dispatch) => {
   try {
     console.log(review)
     await fetch(`${env.REACT_APP_API_URL}/movies/${movieId}/reviews`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: review.username,
-        review: review.reviewText,
-        rating: review.rating,
-      }),
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            username: review.username,
+            review: review.reviewText,
+            rating: review.rating,
+        }),
     });
 
     // refetch updated movie
