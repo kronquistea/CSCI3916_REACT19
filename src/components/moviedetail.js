@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchMovie } from '../actions/movieActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
@@ -11,11 +11,48 @@ const MovieDetail = () => {
   const selectedMovie = useSelector(state => state.movie.selectedMovie);
   const loading = useSelector(state => state.movie.loading); // Assuming you have a loading state in your reducer
   const error = useSelector(state => state.movie.error); // Assuming you have an error state in your reducer
+  const [reviewText, setReviewText] = useState('');
+  const [rating, setRating] = useState(1);
 
 
   useEffect(() => {
     dispatch(fetchMovie(movieId));
   }, [dispatch, movieId]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const username = localStorage.getItem('username')
+
+    if (!username) {
+      alert('You must be logged in to submit a review.');
+      return;
+    }
+
+    if (!reviewText.trim()) {
+      alert('Review cannot be empty.');
+      return;
+    }
+
+    if (rating < 1 || rating > 5) {
+      alert('Rating must be between 1 and 5.');
+      return;
+    }
+
+    const newReview = {
+      movieId: movieId, // From useParams
+      username: username,
+      review: reviewText,
+      rating: rating,
+    };
+
+    // dispatch your action (you'll implement this)
+    dispatch(addReview(movieId, newReview));
+
+    // clear form
+    setReviewText('');
+    setRating(1);
+  };
 
   const DetailInfo = () => {
     if (loading) {
@@ -60,6 +97,39 @@ const MovieDetail = () => {
               {review.rating}
             </p>
           ))}
+        </Card.Body>
+        <Card.Body className="bg-light mt-3">
+          <h5>Add a Review</h5>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <textarea
+                className="form-control"
+                placeholder="Write your review..."
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-2">
+              <label>Rating:</label>
+              <select
+                className="form-control"
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
+              >
+                {[1, 2, 3, 4, 5].map(num => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button type="submit" className="btn btn-primary">
+              Submit Review
+            </button>
+          </form>
         </Card.Body>
       </Card>
     );

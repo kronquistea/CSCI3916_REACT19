@@ -23,6 +23,25 @@ function movieSet(movie) {
     }
 }
 
+export const addReview = (movieId, review) => async (dispatch) => {
+  try {
+    await fetch(`/movies/${movieId}/reviews`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        review: review,
+        rating
+      }),
+    });
+
+    // refetch updated movie
+    dispatch(fetchMovie(movieId));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export function setMovie(movie) {
     return dispatch => {
         dispatch(movieSet(movie));
