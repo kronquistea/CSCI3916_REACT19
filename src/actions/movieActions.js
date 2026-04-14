@@ -29,9 +29,9 @@ export const addReview = (movieId, review) => async (dispatch) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username,
-        review: review,
-        rating
+        username: review.username,
+        review: review.reviewText,
+        rating: review.rating,
       }),
     });
 

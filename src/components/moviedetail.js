@@ -40,7 +40,6 @@ const MovieDetail = () => {
     }
 
     const newReview = {
-      movieId: movieId, // From useParams
       username: username,
       review: reviewText,
       rating: rating,
