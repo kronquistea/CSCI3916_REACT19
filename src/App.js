@@ -8,14 +8,14 @@ import {HashRouter, Routes,  Route} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <HashRouter> {/* The Router component */}
+      <HashRouter>
         <MovieHeader />
         <Routes>
           <Route path="/" element={<MovieList />} />
+          <Route path="/moviesearch" element={<MovieSearch />}/>
           <Route path="/movielist" element={<MovieList />}/>
           <Route path="/movie/:movieId" element={<Movie />}/>
           <Route path="/signin" element={<Authentication />}/>
-          {/*... other routes */}
         </Routes>
       </HashRouter>
     </div>
