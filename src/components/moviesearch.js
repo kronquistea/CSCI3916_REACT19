@@ -21,11 +21,11 @@ function MovieSearch() {
     const filteredMovies = useMemo(() => {
         if (!movies) return [];
 
-        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        const lowerCaseSearchTerm = (searchTerm || "").toLowerCase();
 
         return movies.filter(movie => {
-            const titleMatch = movie.title.toLowerCase().include(lowerCaseSearchTerm);
-            const actorMatch = movie.actors?.some(actor => actor.actorName.toLowerCase().includes(lowerCaseSearchTerm));
+            const titleMatch = movie.title.toLowerCase().includes(lowerCaseSearchTerm);
+            const actorMatch = movie.actors?.some(actor => actor.actorName.toLowerCase().includes(lowerCaseSearchTerm)) || false;
         
             return titleMatch || actorMatch;
         });
