@@ -60,7 +60,7 @@ function MovieSearch() {
                             <Card.Body>
                                 <Card.Title>{movie.title}</Card.Title>
                                 <Card.Text>
-                                    <BsStarFill /> {movie.parseFloat(avgRating).toFixed(2)}
+                                    <BsStarFill /> {movie.avgRating.toFixed(2)}
                                     <br />
                                     {movie.releaseDate}
                                 </Card.Text>

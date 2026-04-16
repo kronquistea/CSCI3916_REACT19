@@ -49,7 +49,7 @@ const DetailInfo = ({
 
         <ListGroupItem>
           <h4>
-            <BsStarFill /> {selectedMovie.parseFloat(avgRating).toFixed(2)}
+            <BsStarFill /> {selectedMovie.avgRating.toFixed(2)}
           </h4>
         </ListGroupItem>
       </ListGroup>
