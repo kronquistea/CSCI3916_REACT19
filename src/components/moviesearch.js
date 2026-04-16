@@ -42,7 +42,7 @@ function MovieSearch() {
 
             <Form.Control
                 type="text"
-                placeholder="Search movies..."
+                placeholder="Search movies (or actors!)..."
                 className="mb-4"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -60,7 +60,7 @@ function MovieSearch() {
                             <Card.Body>
                                 <Card.Title>{movie.title}</Card.Title>
                                 <Card.Text>
-                                    <BsStarFill /> {movie.avgRating}
+                                    <BsStarFill /> {movie.parseFloat(avgRating).toFixed(2)}
                                     <br />
                                     {movie.releaseDate}
                                 </Card.Text>
